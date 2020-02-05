@@ -1,4 +1,4 @@
-# study_english_programming_code
+# 프로젝트 제목 : study_english
 ## 1. 환경설정
 ```
 npm install -g create-react-app
