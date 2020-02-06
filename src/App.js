@@ -7,8 +7,12 @@ import Wrapper from './Wrapper';
 import logo from './images/logo.png';
 import TabPointg from './topics/TabPointing';
 
-const Home = () => <h1>Home</h1>;
-const About = () => <h1>About</h1>;
+const Home = () => (
+  <h1>Home</h1>
+);
+const About = () => (
+  <h1>About</h1>
+);
 
 const List = () => (
   <ul>
@@ -27,32 +31,44 @@ const activeStyle = {
 // 요청이 들어왔을 때 그 요청에 맞는 컴포넌트를 보여주는 역할을 하는 Route
 // path props를 받는다.
 const App = () => {
-
-  
-  return(
+  return (
     // <div>
     //   <Route exact path="/" component={Home} />
     //   <Route path="/about" component={About} />
     //   <Route path="/list" component={List} />
     // </div>
-    <>
+    
+    
+    // HEADER 
+    <div className="body__container"> 
       <Wrapper>   
-        <div className="template">
-          <img
-            className="logo" 
-				    src={logo} 
-				    alt="Logo" 
-				    width="40px" 
-				    height="40px"
-			    />
-          
-          <h1 className="studyOpic">Study Opic!</h1>
-          <div className="registerText">계정만들기</div>
-			    <div className="loginText">로그인</div>
-        </div>
+        <header className="header">
+          <div className="inner">
+
+            <div className="main-group float--left">
+              <a href="/">
+                <img
+                  className="logo" 
+				          src={logo} 
+				          alt="Logo" 
+				          width="32px" 
+				          height="32px"
+			         /> 
+              </a> 
+              <h1 className="logoText"><a href="/">Study Opic!</a></h1>
+            </div>
+
+            
+              <ul className="main-menu float--right">
+                <li className="registerText"><a href="#">계정만들기</a></li>
+                <li className="loginText"><a href="#">로그인</a></li> 
+              </ul>
+         
+          </div>
+        </header>
       </Wrapper>
 
-      <div>  
+      <div className="route">  
         <ul>
           <li>
             {/* 액티브 스타일: 클릭 시 빨간색으로 설정함 */}
@@ -79,7 +95,7 @@ const App = () => {
       </div>
 
       
-    </>  
+    </div>  
     
   );
 };

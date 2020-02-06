@@ -3,9 +3,10 @@ import React from 'react';
 
 function Wrapper({ children }) {
 	const style = {
-		border: '2px solid black',
-		background: 'white',
-		padding: 15,
+		borderBottom: '1px solid #333',
+		background: '#FFF',
+		padding: 10,
+		boxShadow: '0 0 5px rgba(0, 0, 0, 0.75)'
 	};
 
 	return ( 

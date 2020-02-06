@@ -3,35 +3,91 @@
 	width: 64px;
 	height: 64px;
 } */
-.template {
-	display: flex;
-}
-.logo {
-	margin-top: 1rem;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: space-between;
+
+/* COMMO/ */
+.body__container {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: #333;
 }
 
-.studyOpic {
-	font-size: 1.3rem;
+.float--left {
+	float: left;
+}
+.float--right {
+	float: right;
+}
+
+
+/* HEADER */
+/* .header {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.7s);
+
+} */
+
+
+.inner {
+	max-width: 980px;
+	height: 78px;
+	margin: 0 auto;
+}
+.inner .main-group {
+	display: flex;
+	align-items: center;
+	height: 100%;	
+}
+.logo {
+/* 
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between; */
+	align-items: center;
+	margin-right: 4px;
+}
+.logo a {
+	display: block;
+}
+.logoText {
+	/* 
 	margin-top: 1.3rem;
 	flex: auto;
-	flex-direction: row;
+	flex-direction: row; */
+	/* justify-content: space-between; */
+	font-size: 18px;
 	align-items: center;
-	justify-content: space-between;
+}
+.logoText a {
+	text-decoration: none;
+}
+
+
+.main-menu {
+	display: flex;
+	align-items: center;
 	
+}
+.main-menu li {
+	list-style: none;
+}
+.main-menu li a {
+	text-decoration: none;
+	display: block;
+	padding: 10px;
+	color: #3c4146;
+}
+.main-menu li a:hover {
+	color: #4078c8;
 }
 
 .registerText {
-	margin-top: 1.3rem;
-	flex-direction: row ;
-	justify-content: space-between;
+	display: flex;
+	margin-right: 10px;
+	/* flex-direction: row ;
+	justify-content: space-between; */
 
 }
 
 .loginText {
-	margin-top: 1.3rem;
-	flex-direction: row ;
-	justify-content: space-between;
+	display: flex;
 }
