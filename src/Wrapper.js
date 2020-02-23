@@ -2,11 +2,11 @@ import React from 'react';
 // import Header from './Header';
 
 function Wrapper({ children }) {
-	const style = {
-		borderBottom: '1px solid #333',
-		background: '#FFF',
-		padding: 10,
-		boxShadow: '0 0 5px rgba(0, 0, 0, 0.75)'
+	// const style = {
+	// 	borderBottom: '1px solid #333',
+	// 	background: '#FFF',
+	// 	padding: 10,
+	// 	boxShadow: '0 0 5px rgba(0, 0, 0, 0.75)'
 	};
 
 	return ( 

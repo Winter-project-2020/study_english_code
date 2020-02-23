@@ -1,104 +1,92 @@
-import React, {useRef, useState} from 'react';
-import Login from './LoginForm';
+import React from 'react';
+import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import './App.css'
-import { Route, NavLink } from 'react-router-dom';
-import Wrapper from './Wrapper';
+import Home from './pages/Home';
+import About from './pages/About';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Profiles from './pages/Profiles';
+import { Button } from 'reactstrap';
 
-import logo from './images/logo.png';
-import TabPointg from './topics/TabPointing';
+import { auth } from './utils/firebase.utils';
+import { render } from '@testing-library/react';
 
-const Home = () => (
-  <h1>Home</h1>
-);
-const About = () => (
-  <h1>About</h1>
-);
 
-const List = () => (
-  <ul>
-    <li>list</li>
-    <li>list</li>
-    <li>list</li>
-  </ul>
-);
 
-const activeStyle = {
-  color: "red"
-};
+
+const NotFound = () => {
+  return <h1>Not Found!</h1>;
+}
+
+// const activeStyle = {
+//   color: "red"
+// };
 
 // class 안의 함수는 function을 생략한다.
 // 컴포넌트를 만드는 템플릿 
 // 요청이 들어왔을 때 그 요청에 맞는 컴포넌트를 보여주는 역할을 하는 Route
 // path props를 받는다.
-const App = () => {
-  return (
-    // <div>
-    //   <Route exact path="/" component={Home} />
-    //   <Route path="/about" component={About} />
-    //   <Route path="/list" component={List} />
-    // </div>
-    
-    
-    // HEADER 
-    <div className="body__container"> 
-      <Wrapper>   
-        <header className="header">
-          <div className="inner">
+class App extends React.Component {
 
-            <div className="main-group float--left">
-              <a href="/">
-                <img
-                  className="logo" 
-				          src={logo} 
-				          alt="Logo" 
-				          width="32px" 
-				          height="32px"
-			         /> 
-              </a> 
-              <h1 className="logoText"><a href="/">Study Opic!</a></h1>
-            </div>
+  // 생성자
+  constructor() {
+    super();
+    this.state = {
+      currentUser: null
+    }
+  }
 
-            
-              <ul className="main-menu float--right">
-                <li className="registerText"><a href="#">계정만들기</a></li>
-                <li className="loginText"><a href="#">로그인</a></li> 
-              </ul>
-         
-          </div>
-        </header>
-      </Wrapper>
+  // 컴포넌트가 처음 실행될 때: Mount
+  // 컴포넌트가 시작되면: 우선 context, defaultProps와 state를 저장 
+  // componentWillMount() 호출
+  // render로 컴포넌트를 DOM에 부착한 후 Mount가 완료된 후 componentDidMount() 호출
 
-      <div className="route">  
-        <ul>
-          <li>
-            {/* 액티브 스타일: 클릭 시 빨간색으로 설정함 */}
-            <NavLink exact to="/" activeStyle={activeStyle}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" activeStyle={activeStyle}>
-              About
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/list" activeStyle={activeStyle}>
-              List
-            </NavLink>
-          </li>
-        </ul>
+  // componentDidMount() {
+  //   auth.onAuthStateChanged(user => {
+  //     this.setState({ currentUser: user })
+  //   });
+  // }
+
+
+  render() {
+    return (
+
+      <>
+  
+
+
+      <nav>    
+          {/* Switch : 라우터들을 묶은 다음 가장 먼저 path에 매치되는 Route에 연결시킴 */}
+          <Switch>
+            <Route exact path="/" component={Home} />
        
+            <Route path="/about" component={About} /> 
+            <Route path="/profiles" component={Profiles} />
+            <Route path="/register" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route component={NotFound} />
+            {/* <Route path="/profile/:username" component={Profile} /> */}
+          </Switch>
+      </nav>
 
-        <footer>
-
-        </footer>
-      </div>
-
+      {/* The core Firebase JS SDK is always required and must be listed first */}
+      <script src="/__/firebase/7.8.2/firebase-app.js"></script>
       
-    </div>  
-    
-  );
-};
+      {/* 
+      TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries */}
+
+      {/* Initialize Firebase */}
+      <script src="/__/firebase/init.js"></script>
+      <footer></footer>
+     
+     
+
+    </>
+  
+    );
+  }
+}
 
 
 export default App;

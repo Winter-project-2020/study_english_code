@@ -1,12 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import './Sass/custom.scss';
+
+import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'; 
+import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
+	// 라우터 적용하기
 	<BrowserRouter>
 		<App />
 	</BrowserRouter>,
