@@ -1,12 +1,15 @@
 import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
+import stuTopic from '../topics/stuTopic';
 import '../css/homeEx.css';
 import '../images/word.png';
-
+import { Link } from 'react-router-dom';
 import { 
 	Container,
 	Row,
 	Col,
+
+	Media,
 
 	Carousel,
 	CarouselItem,
@@ -26,9 +29,11 @@ import {
 	DropdownToggle,
 	DropdownMenu,
 	DropdownItem,
-	NavbarText
+	NavbarText,
+	
+	Card, CardHeader, CardBody, CardTitle, CardText, CardFooter, CardLink,
+	Popover, PopoverHeader, PopoverBody, 
 } from 'reactstrap';
-
 
 
 
@@ -229,10 +234,10 @@ import {
 const items = [
 	{
 		id: 1,
-		src: '../images/word.png',
 		altText: 'Slide 1',
 		caption: 'slide 1',
-		header: '오늘의 단어 추천'
+		header: '오늘의 단어 추천',
+		src: '../images/word.png'
 	},
 	{
 		id: 2,
@@ -243,7 +248,11 @@ const items = [
 ];
 
 const Home = (props) => {
-	
+
+	// 버튼 눌렀을 때 툴 팁 나오게 하기
+	const [popOpen, setPopOpen] = useState(false);
+	const popoverOpen = () => setPopOpen(!popOpen);
+
 	// 메인 페이지 수평 스크롤하는 슬라이드
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [animate, setAnimate] = useState(false);
@@ -285,7 +294,12 @@ const Home = (props) => {
 	const toggle = () => {
 		setIsOpen(!isOpen);
 	}
-	
+
+	const handleClick = e => {
+		e.preventDefalut();
+	}
+
+
 	return(
 		<div>
 			<style>
@@ -314,7 +328,7 @@ const Home = (props) => {
 
 
 			<div className="main__container">
-				<div>예시</div>
+				<div></div>
 			</div>
 		
 			<Navbar color="light" light expand="md">
@@ -336,6 +350,7 @@ const Home = (props) => {
 								myPage
 							</DropdownToggle>
 							<DropdownMenu right>
+								<DropdownItem><Link to="/myPage">마이페이지</Link></DropdownItem>
 								<DropdownItem>
 									내 성적 관리
 								</DropdownItem>
@@ -350,7 +365,79 @@ const Home = (props) => {
 				</div>	
 			</Navbar>
 
+			<stuTopic />
 
+			<div>
+				{/* <Media left top href="#">
+					<Media object data-src="stu-topic.js/500x500" alt="student script" />
+				</Media>
+				<Media body>
+					<Media heading>
+						스크립트 
+					</Media>
+				</Media> */}
+
+				{/* <Media heading className="mt-1" >
+					스크립트
+				</Media> */}
+				<div className="title">스크립트</div>
+				<Row>
+					<Col>
+						<Card body outline style={{ borderColor: '#FDDCEF' }}>
+						<CardHeader tag="h2">Student</CardHeader>
+						<CardBody>
+							<CardTitle></CardTitle>
+							<CardText>당신이 어떤 학교에 다니는지, 그리고 그 학교의 상징에 대해 설명해주세요.</CardText>
+							<Button color="secondary" onClick={handleClick}>에상 답변</Button>
+						</CardBody>
+						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						</Card>
+					</Col>
+					
+					<Col>		
+						<Card body outline style={{ borderColor: '#FDDCEF' }}>
+						<CardHeader tag="h2">Student</CardHeader>
+						<CardBody>
+							<CardTitle></CardTitle>
+							<CardText>당신에게 가장 기억에 남는 강의는 무엇인지 설명해주세요.</CardText>
+							<Button color="secondary">에상 답변</Button>
+						</CardBody>
+						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						</Card>
+					</Col>
+
+				</Row>
+				<Row>
+					<Col>		
+						<Card body outline style={{ borderColor: '#FDDCEF' }}>
+						<CardHeader tag="h2">Student</CardHeader>
+						<CardBody>
+							<CardTitle></CardTitle>
+							<CardText>공강 시간에 주로 무엇을 하면서 시간을 보내는지 설명해주세요.</CardText>
+							<Button color="secondary">에상 답변</Button>
+						</CardBody>
+						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						</Card>
+					</Col>
+					<Col>		
+						<Card body outline style={{ borderColor: '#FDDCEF' }}>
+						<CardHeader tag="h2">Student</CardHeader>
+						<CardBody>
+							<CardTitle></CardTitle>
+							<CardText>학생들은 보통 방학을 어떻게 보내는지 설명해주세요.</CardText>
+							<Button id="Popover1">에상 답변</Button>
+							{/* <Popover placeholder="bottom" isOpen={isOpen} target={toggle}>
+								<PopoverBody>dddddddddd</PopoverBody>
+							</Popover> */}
+						</CardBody>
+						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						</Card>
+					</Col>
+				</Row>
+
+
+				
+			</div>	
 
 		</div>
 	);

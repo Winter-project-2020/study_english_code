@@ -6,9 +6,18 @@
 npm install -g create-react-app
 create-react-app --version
 cd study_english_code
+
 npm install
 npm install react
 npm install react-dom
 npm install react-router-dom
+
+// react strap 설치 
+npm install --save bootstrapnpm install --save reactstrap react react-dom
+
+// index.js
+import 'bootstrap/dist/css/bootstrap.css'; 
+
+
 npm start
 ```

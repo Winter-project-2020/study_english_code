@@ -1,0 +1,38 @@
+$blue: #228be6;l
+
+.button-container {
+	width: 512px;
+	margin: 0 auto;
+	margin-top: 4rem;
+	border: 1px solid black;
+	padding: 1rem;
+}
+
+.Button {
+	display: inline-flex;
+	color: white;
+	font-weight: bold; // 폰트의 굵기 
+
+	outline: none;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+
+	// px rem em
+	// rem: 현재 브라우저 페이지 폰트 사이즈에 기반해 사이즈가 조정된다.
+	// 크롬 : 16px -> 2.25*16 == 36px
+	height: 2.25rem; 
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 1rem;
+
+	background: $blue;
+	&:hover {
+		// 색상을 10% 밝게 해준다.
+		background: lighten($blue, 10%);
+	}
+	&:active {
+		// 클릭시 
+		background: darken($blue, 10%);
+	}
+}

@@ -27,8 +27,8 @@ function History({ history }) {
 
 	return (
 		<div>
-			<button onClick={goBack}>뒤로가기</button>
-			<button onClick={goHome}>홈으로</button>		
+			{/* <button onClick={goBack}>뒤로가기</button>
+			<button onClick={goHome}>홈으로</button>		 */}
 		</div>
 	);
 }

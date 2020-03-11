@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import './App.css'
 import Home from './pages/Home';
@@ -6,11 +6,10 @@ import About from './pages/About';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profiles from './pages/Profiles';
+import myPage from './pages/myPage';
 import { Button } from 'reactstrap';
 
-import { auth } from './utils/firebase.utils';
 import { render } from '@testing-library/react';
-
 
 
 
@@ -47,12 +46,11 @@ class App extends React.Component {
   //   });
   // }
 
-
   render() {
     return (
 
       <>
-  
+     
 
 
       <nav>    
@@ -64,23 +62,11 @@ class App extends React.Component {
             <Route path="/profiles" component={Profiles} />
             <Route path="/register" component={Signup} />
             <Route path="/login" component={Login} />
+            <Route path="/myPage" component={myPage} />
             <Route component={NotFound} />
             {/* <Route path="/profile/:username" component={Profile} /> */}
           </Switch>
       </nav>
-
-      {/* The core Firebase JS SDK is always required and must be listed first */}
-      <script src="/__/firebase/7.8.2/firebase-app.js"></script>
-      
-      {/* 
-      TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries */}
-
-      {/* Initialize Firebase */}
-      <script src="/__/firebase/init.js"></script>
-      <footer></footer>
-     
-     
 
     </>
   
