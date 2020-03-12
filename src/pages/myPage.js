@@ -6,7 +6,6 @@ import test from '../images/test.png';
 import crown from '../images/crown.png';
 import '../Sass/myPage.scss';
 
-
 import { 
 	Row,
 	Col, 

@@ -7,8 +7,10 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profiles from './pages/Profiles';
 import myPage from './pages/myPage';
-import { Button } from 'reactstrap';
 
+import ScriptMain from './topics/ScriptMain';
+
+import { Button } from 'reactstrap';
 import { render } from '@testing-library/react';
 
 
@@ -63,6 +65,8 @@ class App extends React.Component {
             <Route path="/register" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/myPage" component={myPage} />
+
+            <Route path="/scriptMain" component={ScriptMain} />
             <Route component={NotFound} />
             {/* <Route path="/profile/:username" component={Profile} /> */}
           </Switch>

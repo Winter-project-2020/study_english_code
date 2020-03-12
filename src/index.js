@@ -7,12 +7,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'; 
 import * as serviceWorker from './serviceWorker';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+	typography: {
+		fontFamily: 'Recipekorea',
+	},
+});
 
 ReactDOM.render(
 	// 라우터 적용하기
 	<BrowserRouter>
-		<App />
+		<MuiThemeProvider theme={theme}>
+			<App />
+		</MuiThemeProvider>
 	</BrowserRouter>,
 	document.getElementById('root')
 );

@@ -1,4 +1,6 @@
-$blue: #228be6;l
+$blue: #228be6;
+$gray: #ced4da;
+$pink: #fcc2d7;
 
 .button-container {
 	width: 512px;
@@ -6,6 +8,28 @@ $blue: #228be6;l
 	margin-top: 4rem;
 	border: 1px solid black;
 	padding: 1rem;
+}
+
+@mixin button-color($color) {
+	background: $color;
+
+	&:hover {
+	// 색상을 10% 밝게 해준다.
+		background: lighten($color, 10%);
+	}
+	&:active {
+	// 클릭시 
+	background: darken($color, 10%);
+	}	
+	&.outline {
+		color: $color;
+		background: none;
+		border: 1px solid $color;
+		&.hover {
+			background: $color;
+			color: white;
+		}
+	}
 }
 
 .Button {
@@ -21,18 +45,62 @@ $blue: #228be6;l
 	// px rem em
 	// rem: 현재 브라우저 페이지 폰트 사이즈에 기반해 사이즈가 조정된다.
 	// 크롬 : 16px -> 2.25*16 == 36px
-	height: 2.25rem; 
 	padding-left: 1rem;
 	padding-right: 1rem;
-	font-size: 1rem;
 
-	background: $blue;
-	&:hover {
-		// 색상을 10% 밝게 해준다.
-		background: lighten($blue, 10%);
+
+	// 버튼 사이즈
+	&.large {
+		height: 3rem;
+		font-size: 1.25rem;
 	}
-	&:active {
-		// 클릭시 
-		background: darken($blue, 10%);
+	&.medium {
+		height: 2.25rem; 
+		font-size: 1rem;
+	}
+	&.small {
+		height: 1.75rem; 
+		font-size: 0.875rem;
+	}
+	
+	&.blue {
+		@include button-color($blue);
+	}
+
+	&.pink {
+		@include button-color($pink);
+		// background: $pink;
+		// 	// &:hover === .Button:hover
+		// &:hover {
+		// // 색상을 10% 밝게 해준다.
+		// 	background: lighten($pink, 10%);
+		// }
+		// &:active {
+		// // 클릭시 
+		// 	background: darken($pink, 10%);
+		// }
+	}
+
+	&.gray {
+		@include button-color($gray);
+	}
+
+	&.fullWidth {
+		width: 100%;
+		justify-content: center; //가운데 정렬	
+		& + & {
+			margin-left: 0;
+			margin-top: 1rem;
+		}
+	}
+	
+	& + & {
+		margin-left: 1rem;
 	}
 }
+
+// 버튼이 같이 있으면 특정 스타일을 넣기
+// 버튼 스타일링 안에 & + & 로 넣었다 
+// .Button + .Button {
+// 	margin-left: 1rem;
+// } 

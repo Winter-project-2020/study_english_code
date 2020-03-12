@@ -1,5 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import stuTopic from '../topics/stuTopic';
 import '../css/homeEx.css';
 import '../images/word.png';
@@ -37,207 +39,51 @@ import {
 
 
 
-// // server side rendering	
-// const getWidth = () => {
-// 	const isSSR = typeof window === 'undefined';
-// 	return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
-// }
-
-// const Heading = ({ mobile }) => (
-// 	<Container text>
-// 		<Header 
-// 			as='h1'
-// 			content='Study Opic'
-// 			inverted
-// 			style={{
-// 				fontSize: mobile ? '2em' : '4em',
-// 				fontWeight: 'normal',
-// 				marginBottom: 0,
-// 				marginTop: mobile ? '1.5em' : '3em',
-// 			}} 
-// 		/>
-// 		<Header 
-// 			as='h2'
-// 			content='Do whatever you want when you want to.'
-// 			inverted
-// 			style ={{
-// 				fontSize: mobile ? '1.5em' : '1.7em',
-// 				fontWeight: 'normal',
-// 				marginTop: mobile ? '0.5em' : '1.5em',	
-// 			}}
-// 		/>
-// 		<Button primary size='huge'>
-// 			Get Started
-// 			<Icon name='right arrow' />
-// 		</Button>
-// 	</Container>
-// );
-
-// Heading.propTypes = {
-// 	mobile: PropTypes.bool,
-// };
-
-// class DesktopContainer extends Component {
-// 	state = {};
-
-// 	hideMenu = () => {
-// 		this.state({ fixed: false });
-// 	}
-// 	showMenu = () => {
-// 		this.state({ fixed: true })
-// 	}
-// 	render () {
-// 		const { children } = this.props;
-// 		const { fixed } = this.state;
-		
-// 		return (
-// 			<Responsive 
-// 				getWidth={getWidth} 
-// 				minWidth={Responsive.onlyTablet.minWidth }>
-				
-// 				<Visibility 
-// 					once={false}
-// 					onBottomPassed={this.props.showMenu}
-// 					onBottomPassedReverse={this.props.hideMenu} 
-// 				>
-// 					<Segment 
-// 						inverted
-// 						textAlign='center'
-// 						style={{ 
-// 							minHeight: 700, 
-// 							padding: '1em 0em' }}
-// 						vertical
-// 					>
-						
-// 						<Menu 
-// 							fixed={fixed? 'top' : null }
-// 							inverted={!fixed} 
-// 							pointing={!fixed} 
-// 							secondary={!fixed}
-// 							size='large'
-// 						>
-// 							<Container>
-// 								<Menu.Item as='a' active>
-// 									Home
-// 								</Menu.Item>
-// 								<Menu.Item as='a'>Work</Menu.Item>
-// 								<Menu.Item as='a'>Team</Menu.Item>
-// 								<Menu.Item as='a'>Careers</Menu.Item>
-// 								<Menu.Item position='right'>
-// 									<Button as='a' inverted={!fixed}>
-// 										Log in
-// 									</Button>
-// 									<Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em'}}>
-// 										Sign up
-// 									</Button>
-// 								</Menu.Item>
-// 							</Container>	
-// 						</Menu>
-// 						<Heading />
-// 					</Segment>
-// 				</Visibility>	
-
-// 				{children}	
-// 			</Responsive>
-
-// 		);
-// 	}
-// }	
 
 
-// DesktopContainer.propTypes = {
-// 	children: PropTypes.node,
-// };
+const InsertFormPositioner = styled.div`
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	top: 0;
+	right: 0;
+	position: absolute;
+	background: #fff;
 
-// class MobileContainer extends Component {
-// 	state = {}
-
-// 	handleSidebarHide = () => {
-// 		this.setState({ sidebarOpened: false });
-// 	}
-// 	handleToggle = () => {
-// 		this.setState({ sidebarOpened: true });
-// 	}
-
-// 	render() {
-// 		const { children } = this.props;
-// 		const { sidebarOpened } = this.state;
-// 		return (
-// 			<Responsive
-// 				as={Sidebar.Pushable}
-// 				getWidth={getWidth}
-// 				maxWidth={Responsive.onlyMobile.maxWidth}
-// 			>
-// 				<Sidebar
-// 					as={Menu}
-// 					animation='push'
-// 					inverted
-// 					onHide={this.handleSidebarHide}
-// 					vertical
-// 					visible={sidebarOpened}
-// 				>
-// 					<Menu.Item as='a' active>
-// 						Home
-// 					</Menu.Item>
-// 					<Menu.Item as='a'>Work</Menu.Item>						
-// 					<Menu.Item as='a'>Team</Menu.Item>
-// 					<Menu.Item as='a'>Careers</Menu.Item>
-// 					<Menu.Item as='a'>Log in</Menu.Item>
-// 					<Menu.Item as='a'>Sign up</Menu.Item>
-// 				</Sidebar>
-// 				<Sidebar.Pusher dimmed={sidebarOpened}>
-// 					<Segment
-// 						inverted
-// 						textAlign='center'
-// 						style={{ minHeight: 350, padding: '1em 0em' }}
-// 						vertical
-// 					>
-// 						<Container>
-// 							<Menu inverted pointing secondary size='large'>
-// 								<Menu.Item onClick={this.handleToggle}>
-// 									<Icon name='sidebar' />
-// 								</Menu.Item>
-// 								<Menu.Item position='right'>
-// 									<Button as='a' inverted>
-// 										Log in
-// 									</Button>
-// 									<Button as='a' inverted style={{ marginLeft: '0.5em' }}>
-// 										Sign up 
-// 									</Button>
-// 								</Menu.Item>
-// 							</Menu>
-// 						</Container>
-// 						<Heading mobile />
-// 					</Segment>
-// 					{children}
-// 				</Sidebar.Pusher>
-// 			</Responsive>
-// 		);
-// 	}
-// }
-
-// MobileContainer.propTypes = {
-// 	children: PropTypes.node,
-// }
+	border: 5px solid #f1f3f5;
+	border-radius: 42px;
+	border-width: 5px;
+`;
+const InsertForm = styled.div`
+	background: #f1f3f5;
+	padding: 32px;
+	padding-bottom: 72px;
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+	border-top: 1px solid #e9ecef;
+`;
 
 
-// const ResponsiveContainer = ({ children }) => (
-// 	<div>
-// 		<DesktopContainer>{ children }</DesktopContainer>
-// 		<MobileContainer>{ children }</MobileContainer>
-// 	</div>
-// )
 
-// ResponsiveContainer.propTypes = {
-// 	children: PropTypes.node,
-// }
+
+const StyledTitle = styled.div`
+
+	padding-top: 40px;
+	padding-bottom: 13px;
+	h3 {
+		color: #495057;
+		font-weight: bold;
+		text-align: center;
+	}
+`;
+
+
 const items = [
 	{
 		id: 1,
 		altText: 'Slide 1',
 		caption: 'slide 1',
 		header: '오늘의 단어 추천',
-		src: '../images/word.png'
 	},
 	{
 		id: 2,
@@ -249,9 +95,12 @@ const items = [
 
 const Home = (props) => {
 
-	// 버튼 눌렀을 때 툴 팁 나오게 하기
-	const [popOpen, setPopOpen] = useState(false);
-	const popoverOpen = () => setPopOpen(!popOpen);
+	// 토글버튼 
+	// 버튼 onClick={onTog} 로 설정하기 
+	const [open, setOpen] = useState(false);
+	const onTog = () => {
+		setOpen(!open);
+	}
 
 	// 메인 페이지 수평 스크롤하는 슬라이드
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -280,7 +129,6 @@ const Home = (props) => {
 				onExiting={() => setAnimate(true)}
 				onExited={() => setAnimate(false)}
 			>
-				<img src={item.src} alt={item.altText} />
 				<CarouselCaption className="text-light" captionText={item.caption} captionHeader={item.header} />
 			</CarouselItem>
 		);
@@ -290,14 +138,10 @@ const Home = (props) => {
 
 
 	const [isOpen, setIsOpen] = useState(false);
-	
 	const toggle = () => {
 		setIsOpen(!isOpen);
 	}
 
-	const handleClick = e => {
-		e.preventDefalut();
-	}
 
 
 	return(
@@ -305,9 +149,9 @@ const Home = (props) => {
 			<style>
 				{
 					`.custom-tag {
-						max-width: 100%;
-						height: 750px;
-						background: #3A5A69;
+						
+						height: 580px;
+						background: #495057;
 					}`
 				}
 			</style>
@@ -320,6 +164,7 @@ const Home = (props) => {
 					items={items}
 					activeIndex={activeIndex}
 					onClickHandler={goIndex} />
+
 				{slides}	
 				<CarouselControl direction="prev" directionText="이전" onClickHandler={pre}/>
 				<CarouselControl direction="next" directionText="다음" onClickHandler={next} />
@@ -360,8 +205,12 @@ const Home = (props) => {
 				</Collapse>
 
 				<div className="clearfix">
-					<button className="btn float--right">로그인</button>{' '}
-					<button className="btn float--right">계정 만들기</button>
+					<button className="btn float--right">
+						<Link to="/login">로그인</Link>
+					</button>{' '}
+					<button className="btn float--right">
+						<Link to="/register">계정 만들기</Link>
+					</button>
 				</div>	
 			</Navbar>
 
@@ -380,61 +229,137 @@ const Home = (props) => {
 				{/* <Media heading className="mt-1" >
 					스크립트
 				</Media> */}
-				<div className="title">스크립트</div>
+				
+				<StyledTitle>
+					<h3>스크립트 예제</h3>
+				</StyledTitle>
+
+
+				{/* 학생 스크립트 카드 1 */}
 				<Row>
 					<Col>
-						<Card body outline style={{ borderColor: '#FDDCEF' }}>
-						<CardHeader tag="h2">Student</CardHeader>
-						<CardBody>
-							<CardTitle></CardTitle>
-							<CardText>당신이 어떤 학교에 다니는지, 그리고 그 학교의 상징에 대해 설명해주세요.</CardText>
-							<Button color="secondary" onClick={handleClick}>에상 답변</Button>
-						</CardBody>
-						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
-						</Card>
-					</Col>
-					
-					<Col>		
-						<Card body outline style={{ borderColor: '#FDDCEF' }}>
-						<CardHeader tag="h2">Student</CardHeader>
-						<CardBody>
-							<CardTitle></CardTitle>
-							<CardText>당신에게 가장 기억에 남는 강의는 무엇인지 설명해주세요.</CardText>
-							<Button color="secondary">에상 답변</Button>
-						</CardBody>
-						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						<Card body outline style={{
+							boxSizing: 'border-box',
+							maxWidth: '100%',
+							borderRadius: '42px',
+							borderWidth: '5px',
+						}}>
+							<CardHeader tag="h2">Student</CardHeader>
+							<CardBody>
+								<CardTitle></CardTitle>
+								<CardText>당신이 어떤 학교에 다니는지, 그리고 그 학교의 상징에 대해 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>예상 답변</Button>
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							<CardBody>
+								<CardText>당신에게 가장 기억에 남는 강의는 무엇인지 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>예상 답변</Button>
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							<CardBody>
+								<CardText>공강 시간에 주로 무엇을 하면서 시간을 보내는지 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>
+									예상 답변
+								</Button>
+							</CardBody>
+							<CardFooter className="text-muted"><CardLink href="/scriptMain">more ...</CardLink></CardFooter>
 						</Card>
 					</Col>
 
+
+					<Col>		
+						<Card body outline style={{
+							boxSizing: 'border-box',
+							maxWidth: '100%',
+							borderRadius: '42px',
+							borderWidth: '5px',
+						}}>
+							<CardHeader tag="h2">돌발 토픽</CardHeader>
+							<CardBody>
+								<CardTitle></CardTitle>
+								<CardText>당신의 집에 대해서 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>예상 답변</Button>
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							<CardBody>
+								<CardText>집에 처음으로 이사했던 날에 대해서 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>예상 답변</Button>
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							<CardBody>
+								<CardText>당신의 침실에는 무엇이 있고 어떻게 꾸며놓았는지 자세하게 설명해주세요.</CardText>
+								<Button open={open} onClick={onTog}>
+									예상 답변
+								</Button>
+							</CardBody>
+						</Card>
+							{/* {open && (
+								<InsertFormPositioner>
+									답변 
+								</InsertFormPositioner>	
+							)}		 */}
+						
+					</Col>
 				</Row>
+
+				<hr />			
+				<StyledTitle>
+					<h3>시험 일정</h3>
+				</StyledTitle>	
+				
 				<Row>
 					<Col>		
-						<Card body outline style={{ borderColor: '#FDDCEF' }}>
-						<CardHeader tag="h2">Student</CardHeader>
-						<CardBody>
-							<CardTitle></CardTitle>
-							<CardText>공강 시간에 주로 무엇을 하면서 시간을 보내는지 설명해주세요.</CardText>
-							<Button color="secondary">에상 답변</Button>
-						</CardBody>
-						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
-						</Card>
-					</Col>
-					<Col>		
-						<Card body outline style={{ borderColor: '#FDDCEF' }}>
-						<CardHeader tag="h2">Student</CardHeader>
-						<CardBody>
-							<CardTitle></CardTitle>
-							<CardText>학생들은 보통 방학을 어떻게 보내는지 설명해주세요.</CardText>
-							<Button id="Popover1">에상 답변</Button>
-							{/* <Popover placeholder="bottom" isOpen={isOpen} target={toggle}>
-								<PopoverBody>dddddddddd</PopoverBody>
-							</Popover> */}
-						</CardBody>
-						<CardFooter className="text-muted"><CardLink href="#">more ...</CardLink></CardFooter>
+						<Card body outline style={{
+							boxSizing: 'border-box',
+							marginLeft: '15%',
+							marginRight: '15%',
+							borderRadius: '42px',
+							borderWidth: '5px',
+						}}>
+							<CardHeader tag="h2">예</CardHeader>
+							<CardBody>
+								
+							</CardBody>
+							
+								
+							
+							<CardBody>
+								
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							
 						</Card>
 					</Col>
 				</Row>
 
+				<hr />			
+				<StyledTitle>
+					<h3>성적 관리</h3>
+				</StyledTitle>	
+				<Row>
+					<Col>		
+						<Card body outline style={{
+							boxSizing: 'border-box',
+							marginLeft: '15%',
+							marginRight: '15%',
+							borderRadius: '42px',
+							borderWidth: '5px',
+						}}>
+							<CardHeader tag="h2">예</CardHeader>
+							<CardBody>
+								
+							</CardBody>
+							
+								
+							
+							<CardBody>
+								
+							</CardBody>
+							<CardFooter className="text-muted"></CardFooter>
+							
+						</Card>
+					</Col>
+				</Row>			
 
 				
 			</div>	
